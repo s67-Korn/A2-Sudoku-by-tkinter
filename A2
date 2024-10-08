@@ -1,0 +1,33 @@
+from tkinter import *
+
+# set the sudoku grid
+sudoku_grid = [                         
+    [5, 3, 0, 0, 7, 0, 0, 0, 0],
+    [6, 0, 0, 1, 9, 5, 0, 0, 0],
+    [0, 9, 8, 0, 0, 0, 0, 6, 0],
+    [8, 0, 0, 0, 6, 0, 0, 0, 3],
+    [4, 0, 0, 8, 0, 3, 0, 0, 1],
+    [7, 0, 0, 0, 2, 0, 0, 0, 6],
+    [0, 6, 0, 0, 0, 0, 2, 8, 0],
+    [0, 0, 0, 4, 1, 9, 0, 0, 5],
+    [0, 0, 0, 0, 8, 0, 0, 7, 9]
+]
+
+
+def create_grid():
+    for i in range(len(sudoku_grid)):
+        for j in range(len(sudoku_grid[i])):        # for each column in each row  of sudoku_grid
+            if sudoku_grid[i][j] == 0:              # if the number set as 0 will create an entry
+                entry = Entry(window, width=3, font=('Courier', 24), justify='center', fg='#000000', borderwidth=2)
+                entry.grid(row=i, column=j, padx=5, pady=5)
+            else:                                   # if the number is not 0 will create a label displaying a given number
+                label = Label(window, text=str(sudoku_grid[i][j]), width=3, font=('Courier', 24), justify='center', fg='#000000',
+                              borderwidth=2)
+                label.grid(row=i, column=j, padx=5, pady=5)
+
+
+window = Tk()               # instantiate a window           
+window.title("• Sudoku •")  # set window name
+create_grid()
+
+window.mainloop()
